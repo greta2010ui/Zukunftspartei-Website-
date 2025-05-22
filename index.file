@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zukunftspartei – Wir weisen den Weg</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #F5F0F8;
+      color: #333;
+    }
+
+    header {
+      background-color: #CCA9DD;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header img {
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background-color: #EBDCF3;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+    }
+
+    .themen-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .themen-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .buttons button {
+      background-color: #CCA9DD;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .buttons button.active {
+      background-color: #A271BB;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: #CCA9DD;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://i.postimg.cc/sfNWhP1j/IMG-1560.png" alt="Logo" />
+  <nav>
+    <a href="#themen">Themen</a>
+    <a href="#ueberuns">Über uns</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Willkommen bei der Zukunftspartei</h1>
+  <p>Wir weisen den Weg in die Zukunft.</p>
+</section>
+
+<section id="themen" class="themen-section">
+  <h2>Dafür stehen wir</h2>
+  <div class="buttons">
+    <button onclick="zeigeInhalt('arbeit')" id="btn-arbeit">Arbeit & Wirtschaft</button>
+    <button onclick="zeigeInhalt('bildung')" id="btn-bildung">Bildung</button>
+    <button onclick="zeigeInhalt('gesundheit')" id="btn-gesundheit">Gesundheit & Pflege</button>
+    <button onclick="zeigeInhalt('rente')" id="btn-rente">Rente</button>
+    <button onclick="zeigeInhalt('migration')" id="btn-migration">Migration</button>
+  </div>
+
+  <button id="videoBtn">Video ansehen</button>
+
+<!-- Pop-up Container -->
+<div id="videoPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+  background: rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:2000;">
+  <div style="position:relative; width:80%; max-width:800px; background:#fff; padding:10px; border-radius:8px;">
+    <button id="closePopup" style="position:absolute; top:5px; right:10px; font-size:20px; background:none; border:none; cursor:pointer;">×</button>
+    <iframe src="https://streamable.com/o/7vv8ey" width="100%" height="450" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+  const videoBtn = document.getElementById('videoBtn');
+  const videoPopup = document.getElementById('videoPopup');
+  const closePopup = document.getElementById('closePopup');
+
+  videoBtn.addEventListener('click', () => {
+    videoPopup.style.display = 'flex';
+  });
+
+  closePopup.addEventListener('click', () => {
+    videoPopup.style.display = 'none';
+  });
+
+  // Optional: Pop-up schließen, wenn man außerhalb des Videos klickt
+  videoPopup.addEventListener('click', (e) => {
+    if(e.target === videoPopup) {
+      videoPopup.style.display = 'none';
+    }
+  });
+</script>
+
+
+<div id="arbeit" class="content" style="display:none;">
+    <h3>Arbeit & Wirtschaft</h3>
+    <ul>
+      <li><strong>Fachkräftemangel bekämpfen:</strong> Einwanderung vereinfachen, Abschlüsse schneller anerkennen, Weiterbildung fördern</li>
+      <li><strong>Arbeit attraktiver machen:</strong> Weniger Sozialleistungen ohne Engagement, mehr Anreize, Kinderbetreuung ausbauen</li>
+      <li><strong>Bürokratie abbauen:</strong> Digitale Verfahren, Start-ups vereinfachen, Vorschriften streichen</li>
+    </ul>
+    <p><em>Warum das wichtig ist:</em> Arbeit sichert Wohlstand und den Sozialstaat – wir brauchen mehr Fachkräfte und bessere Bedingungen.</p>
+  </div>
+
+  <div id="bildung" class="content" style="display:none;">
+    <h3>Bildung</h3>
+    <ul>
+      <li><strong>Einheitliche Grundschule bis Klasse 7:</strong> Chancengleichheit, spätere Spezialisierung</li>
+      <li><strong>Differenzierung ab Klasse 8:</strong> Gymnasium, Realschule, Hauptschule mit individueller Förderung</li>
+      <li><strong>Digitale Bildung:</strong> Geräte, Plattformen, individuelle Förderung</li>
+      <li><strong>Lehrermangel bekämpfen:</strong> Gehalt, Arbeitsbedingungen, Anerkennung ausländischer Abschlüsse</li>
+    </ul>
+    <p><em>Warum das wichtig ist:</em> Bildung ist der Schlüssel für Chancengleichheit, Innovation und gesellschaftlichen Zusammenhalt.</p>
+  </div>
+
+  <div id="gesundheit" class="content" style="display:none;">
+    <h3>Gesundheit & Pflege</h3>
+    <p>Hier folgt der detaillierte Text zum Thema Gesundheit & Pflege.</p>
+  </div>
+
+  <div id="rente" class="content" style="display:none;">
+    <h3>Rente</h3>
+    <p>Hier folgt der detaillierte Text zum Thema Rente.</p>
+  </div>
+
+  <div id="migration" class="content" style="display:none;">
+    <h3>Migration</h3>
+    <p>Hier folgt der detaillierte Text zum Thema Migration.</p>
+  </div>
+</section>
+
+<section id="ueberuns" class="content">
+  <h2>Über uns</h2>
+  <p>Wir sind eine junge, engagierte Partei mit einer klaren Vision: soziale Gerechtigkeit, Fortschritt und eine faire Zukunft für alle.</p>
+</section>
+
+<footer>
+  Zukunftspartei – Wir weisen den Weg.
+</footer>
+
+<script>
+  function zeigeInhalt(id) {
+    const bereiche = ['arbeit', 'bildung', 'gesundheit', 'rente', 'migration'];
+    bereiche.forEach(b => {
+      document.getElementById(b).style.display = b === id ? 'block' : 'none';
+      document.getElementById('btn-' + b).classList.toggle('active', b === id);
+    });
+  }
+</script>
+
+</body>
+</html>
